@@ -9,11 +9,11 @@ public class Principal {
 		System.out.println("-----------------------------------------------");
 		System.out.println("Mazo desordenado: ");
 		juego.desordenarMazo();
-		//mostrarMazo();
+		juego.mostrarMazo();
 		System.out.println("-----------------------------------------------");
 		System.out.println("Mazo ordenado: ");
 		juego.ordenarMazo();
-		//mostrarMazo();
+		juego.mostrarMazo();
 	}
 
 }

@@ -1,7 +1,7 @@
 import java.util.Random;
 
 public class Juego {
-	Carta [] cartas;
+	private Carta [] cartas;
 	
 	public Juego() {
 		cartas = new Carta[13];
@@ -18,33 +18,30 @@ public class Juego {
 		
 		for(int i = 0; i < cartas.length; i++) {
 			
-			int numero = (int) rnd.nextInt(cartas.length); 
+			int numero = (int) rnd.nextInt(cartas.length - 1);
 			
-			if(numeros.length > 0) {	
-				while(revisarNumeros(numeros, numero)) {
-					numero = (int) rnd.nextInt(cartas.length);
-				}
+			while(revisarNumeros(numeros, numero)) {
+				numero = (int) rnd.nextInt(cartas.length) + 1;
 			}
 			
 			numeros[i] = numero;
 			cartas[i] = new Carta(numero, "\u2660");
-			System.out.println("Mazo[" + i + "]" + "= "  + cartas[i].getValor() + " " + cartas[i].getPalo());
 		}
 	}
 	
 	public boolean revisarNumeros(int [] numeros, int numero) {
-		boolean verificar = false;
+		boolean numeroRepetido = false;
 		
 		for(int i = 0; i < numeros.length; i++) {
 			if(numero == numeros[i]) {
-				verificar = true;
+				numeroRepetido = true;
 				break;
 			}
 			else {
-				verificar = false;
+				numeroRepetido = false;
 			}
 		}	
-		return verificar;
+		return numeroRepetido;
 	}
 	
 	public void ordenarMazo() {
@@ -59,10 +56,6 @@ public class Juego {
                     cartas[j] = tmp;
                 }
             }
-        }
-        for(int i = 0; i < cartas.length; i++)
-        {
-        	System.out.println("Mazo[" + i + "]" + "= "  + cartas[i].getValor() + " " + cartas[i].getPalo());
         }
 	}
 	
